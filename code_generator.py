@@ -3,7 +3,7 @@ import botocore.config
 import json
 import time
 
-def generate_code_using_bedrock(message:str, languge:str, extention:str) ->str:
+def generate_code_using_bedrock(message:str, languge:str, extension:str) ->str:
   prompt_text = f'''Human: Write{language} for the following instructions: {message}.
   Assistant:
   '''
@@ -25,7 +25,7 @@ def generate_code_using_bedrock(message:str, languge:str, extention:str) ->str:
   except Exception as e:
     print("Error generating the code: {e}")
     return ""
-def save_code_file(code_s3_bucket, code_s3_path,extention):
+def save_code_file(code_s3_bucket, code_s3_path,extension):
   s3=boto3.client('s3')
   try: 
     s3.put_object(Bucket = s3_bucket, Key= s3_ky, Body=code) 
@@ -40,7 +40,7 @@ def lambda_handler(event,context):
   generated_code = generate_code_using_bedrock(message, language)
   if generated_code : 
     current_time = time.strftime('%Y%M%D-%H%M%S')
-    s3_key= f'code-output/{current_time}.{extention}'
+    s3_key= f'code-output/{current_time}.{extension}'
     s3_bucket="my_code_bucket"
 
     save_code_file(generated_code, s3_bucket, s3_key)
