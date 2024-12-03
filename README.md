@@ -13,6 +13,6 @@ Example call for code_gen :
 {
 "key":"python",
 "message":"",
-"extention":"py"
+"extension":"py"
 }
 
