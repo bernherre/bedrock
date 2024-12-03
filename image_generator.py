@@ -20,7 +20,7 @@ def lambda_habler(event, context):
   reponse = bedrock.invoke_model(body=json.dumps(body), modelId="stability.stable-diffusion-xl-v0",contentType="application/json", accept= "application/json")
   reponse_body=json.loads(response.get("body").read())
   base_64_img_str = reponse_body["artifacts"][0].get("base64")
-  image= base64.decodebytes(base_64_img_str,"utf-8")
+  image= base64.decodedbytes(base_64_img_str,"utf-8")
 
   bucket_name = "images-bucket"
   current_time = time.strftime('%Y%M%D-%H%M%S')
