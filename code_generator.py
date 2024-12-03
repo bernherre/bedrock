@@ -46,9 +46,15 @@ def lambda_handler(event,context):
     save_code_file(generated_code, s3_bucket, s3_key)
   else: 
     print("there was not code generated")
-  return{
-    'statusCode':200,
-    'body':json.dumps('code generation completed')
-  }
-  }
-  generate_code_using_bedrock
+  if generated_code <> "":
+    return{
+      'statusCode':200,
+      'body':json.dumps('code generation completed')
+    }
+    }
+  else:   
+    return{
+      'statusCode':400,
+      'body':json.dumps('Opps! Something occurs')
+    }
+    }
