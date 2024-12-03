@@ -4,9 +4,9 @@ import json
 import time
 
 def generate_code_using_bedrock(message:str, languge:str, extension:str) ->str:
-  prompt_text = f'''Human: Write{language} for the following instructions: {message}.
+  prompt_text = f"""Human: Write{language} for the following instructions: {message}.
   Assistant:
-  '''
+  """
   body = {
       "prompt": prompt_text,
       "max_tokens_to_sample": 2048,
