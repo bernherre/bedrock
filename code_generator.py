@@ -36,6 +36,7 @@ def lambda_handler(event,context):
   event = json.loads(event['body'])
   message = event['message']
   language= event['key']
+  extension=event['extension']
   print(message, language)
   generated_code = generate_code_using_bedrock(message, language)
   if generated_code : 
